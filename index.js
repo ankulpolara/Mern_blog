@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-CORS configuration
+// CORS configuration
 const corsOptions = {
   origin:' http://localhost:3000'  , // Replace with the frontend's URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
