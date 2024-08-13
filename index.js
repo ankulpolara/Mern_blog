@@ -40,7 +40,7 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-  origin:' http://localhost:3000'  , // Replace with the frontend's URL
+  origin:'https://polara-blog-app.netlify.app/'  , // Replace with the frontend's URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
