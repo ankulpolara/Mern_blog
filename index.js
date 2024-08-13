@@ -21,20 +21,32 @@ const moment = require('moment-timezone');
 // Set default time zone to IST
 moment.tz.setDefault('Asia/Kolkata');
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
+
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+  next();
+});
+
 
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// CORS configuration
-// const corsOptions = {
-//   origin:' http://localhost:3000'  , // Replace with the frontend's URL
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-//   optionsSuccessStatus: 204
-// };
+CORS configuration
+const corsOptions = {
+  origin:' http://localhost:3000'  , // Replace with the frontend's URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 cloudinaryConnect();
 
 // Cloudinary configuration
