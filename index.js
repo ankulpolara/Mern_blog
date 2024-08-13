@@ -21,17 +21,7 @@ const moment = require('moment-timezone');
 // Set default time zone to IST
 moment.tz.setDefault('Asia/Kolkata');
 
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-//   next();
-// });
 
-
-// app.use((req, res, next) => {
-//   res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-//   res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-//   next();
-// });
 
 
 
@@ -39,14 +29,26 @@ moment.tz.setDefault('Asia/Kolkata');
 app.use(express.json());
 
 // CORS configuration
-// const corsOptions = {
-//   origin:'https://polara-blog-app.netlify.app/'  , // Replace with the frontend's URL
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-//   optionsSuccessStatus: 204
-// };
+const corsOptions = {
+  origin: 'https://polara-blog-app.netlify.app', // Replace with the frontend's URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow credentials like cookies to be sent
+  optionsSuccessStatus: 204,
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
+
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://polara-blog-app.netlify.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 cloudinaryConnect();
 
 // Cloudinary configuration
@@ -55,8 +57,6 @@ cloudinary.config({
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
 });
-
-
 
 // Define routes
 // app.use('/api/', userRoute);
