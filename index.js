@@ -37,7 +37,7 @@ app.use(express.json());
 // app.use(cors(corsOptions));
 cloudinaryConnect();
 
-Cloudinary configuration
+// Cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
