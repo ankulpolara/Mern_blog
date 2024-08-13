@@ -27,17 +27,17 @@ moment.tz.setDefault('Asia/Kolkata');
 app.use(express.json());
 
 // CORS configuration
-const corsOptions = {
-  origin:' http://localhost:3000'  , // Replace with the frontend's URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204
-};
+// const corsOptions = {
+//   origin:' http://localhost:3000'  , // Replace with the frontend's URL
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 cloudinaryConnect();
 
-// Cloudinary configuration
+Cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
@@ -60,6 +60,9 @@ mongoose
 // Basic route to handle GET requests
 app.get('/', (req, res) => {
   res.send('Hello World from server!');
+});
+app.get('/demo', (req, res) => {
+  res.send('demo is working good ......');
 });
 
 // Start the server
