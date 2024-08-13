@@ -27,14 +27,14 @@ moment.tz.setDefault('Asia/Kolkata');
 app.use(express.json());
 
 // CORS configuration
-const corsOptions = {
-  origin: process.env.REACT_BASE_URL, // Replace with the frontend's URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204
-};
-
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: process.env.REACT_BASE_URL, // Replace with the frontend's URL
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204
+// };
+ // corOptions
+app.use(cors());
 cloudinaryConnect();
 
 // Cloudinary configuration
